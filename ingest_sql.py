@@ -204,15 +204,17 @@ try:
         statement = 'INSERT INTO mtg_editions(acronym, full_name) VALUES("'+edition+'", "'+set_list[edition]+'")'
         print statement
         cur.execute(statement)
+    
     sys.exit()        
         
     for card in cards:
         card = json.loads(card)
         statement = 'INSERT INTO mtg_card_lookup(name, edition, foreign_id, rarity) VALUES("'+str(card['name'])+'", "'+str(card['edition'])+'", '+str(card['foreign_id'])+', '+str(card['rarity'])+')'
         print statement
-        sys.exit()
-    cur.execute()
+        cur.execute()
         
+    sys.exit()
+
         
 except sql.Error, e:
     print "Error %d: %s" % (e.args[0],e.args[1])
